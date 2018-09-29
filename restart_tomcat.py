@@ -7,7 +7,7 @@ from sys import argv
 method = argv[1]
 
 # tomcat名，对应路径中tomcat
-tomcats = ['tomcat-8-1', 'tomcat-8-2']
+tomcats = ['tomcat-8.5.31_1', 'tomcat-8.5.31_2','tomcat-8.5.31_3']
 
 if method == "start":
     for tomcat in tomcats:
@@ -16,7 +16,7 @@ if method == "start":
         if len(toms) >= 1:
             print u"%s tomcat进程已启动！, pid为：%s\n" % (tomcat, toms[0])
             continue
-        print subprocess.Popen('/home/wangyong/toolsoftware/%s/bin/startup.sh' % tomcat, stdout=subprocess.PIPE,shell=True).communicate()
+        print subprocess.Popen('/home/yuwei/%s/bin/startup.sh' % tomcat, stdout=subprocess.PIPE,shell=True).communicate()
         print '\n'
         res = subprocess.Popen("ps -ef | grep %s | grep -v grep | awk '{print $2}'" % tomcat.split('-', 1)[1], stdout=subprocess.PIPE, shell=True)
         toms = res.stdout.readlines()
@@ -34,7 +34,7 @@ elif method == "shutdown":
             print u"%s tomcat进程未启动！\n" % tomcat
             continue
         print u'正在关闭pid为的%s进程%s\n' % (toms[0], tomcat)
-        print subprocess.Popen('/home/wangyong/toolsoftware/%s/bin/shutdown.sh' % tomcat, stdout=subprocess.PIPE, shell=True).communicate()
+        print subprocess.Popen('/home/yuwei/%s/bin/shutdown.sh' % tomcat, stdout=subprocess.PIPE, shell=True).communicate()
         print '\n'
         res = subprocess.Popen("ps -ef | grep %s | grep -v grep | awk '{print $2}'" % tomcat.split('-', 1)[1], stdout=subprocess.PIPE, shell=True)
         toms = res.stdout.readlines()
@@ -46,3 +46,4 @@ elif method == "shutdown":
 
 else:
     print u"命令参数错误\n"
+
