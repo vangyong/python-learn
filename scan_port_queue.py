@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python
 
 import telnetlib
 import threading
-import queue
+import Queue
 
 
 def get_ip_status(ip):
@@ -23,13 +22,13 @@ def check_open(q):
         while True:
             ip = q.get_nowait()
             get_ip_status(ip)
-    except queue.Empty as e:
+    except Queue.Empty as e:
         pass
 
 
 if __name__ == '__main__':
-    host = ['10.0.0.10', '10.0.0.11', '10.0.0.12']  # 这里模拟多IP地址的情况，也可以从文件中读取IP——list
-    q = queue.Queue()
+    host = ['192.168.100.207']  # 这里模拟多IP地址的情况，也可以从文件中读取IP——list
+    q = Queue.Queue()
     for ip in host:
         q.put(ip)
     threads = []
