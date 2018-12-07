@@ -16,8 +16,7 @@ client.execute('DROP TABLE IF EXISTS test')
 client.execute('CREATE TABLE test (x Int32) ENGINE = Memory')
 
 client.execute(
-    'INSERT INTO test (x) VALUES',
-    [{'x': 1}, {'x': 2}, {'x': 3}, {'x': 100}]
+    'INSERT INTO test (x) VALUES', [{'x': 1}, {'x': 2}, {'x': 3}, {'x': 100}]
 )
 client.execute('INSERT INTO test (x) VALUES', [[200]])
 
