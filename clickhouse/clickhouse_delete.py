@@ -4,12 +4,12 @@
 # 刪除指定天之前的数据
 
 from clickhouse_driver.client import Client
-from sphinx.util import logging
-import ConfigParser
+import logging
+import configparser
 import datetime
 import os
 
-cfg = ConfigParser.ConfigParser()
+cfg = configparser.ConfigParser()
 cfg.read('clickhouse.conf')
 db_url = cfg.get('db', 'db_url')
 db_database = cfg.get('db', 'db_database')
@@ -30,14 +30,14 @@ client = Client(db_url, database=db_database, user=db_user, password=db_pass)
 def disk_usage(path):
     st = os.statvfs(path)
     free = (st.f_bavail * st.f_frsize)
-    print free
+    print(free)
     total = (st.f_blocks * st.f_frsize)
-    print total
+    print(total)
     used = (st.f_blocks - st.f_bfree) * st.f_frsize
-    print used
+    print(used)
     try:
         percent = (float(used) / total) * 100
-        print percent
+        print(percent)
     except ZeroDivisionError:
         percent = 0
     return percent
@@ -57,12 +57,15 @@ def delete_data():
                 sql_str = 'ALTER TABLE ' + t + ' DROP PARTITION ' + p[0] + ''
                 logging.info(sql_str)
                 client.execute(sql_str)
-                print '删除表:' + t + ' 数据分区:' + str(p[0])
+                print('删除表:' + t + ' 数据分区:' + str(p[0])) 
                 logging.info('删除表:' + t + ' 数据分区:' + str(p[0]))
 
-
+logging.info('开始执行')
 delete_data()
 percent = float(disk_usage(data_content))
 if (percent < data_percent):
     data_days = data_days - 1
     delete_data()
+    logging.info('执行完毕')
+
+
