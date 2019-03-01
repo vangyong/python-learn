@@ -67,5 +67,3 @@ if (percent < data_percent):
     data_days = data_days - 1
     delete_data()
     logging.info('执行完毕')
-
-
