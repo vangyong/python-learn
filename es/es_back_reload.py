@@ -6,6 +6,8 @@ import configparser
 import csv
 import time
 import os
+import requests
+import json
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
 
@@ -116,14 +118,14 @@ class deleteEsData():
         self.endTime = endTime
 
     def deleteEsData(self):
-        es.delete('csoc-logs-2018.12.21', 'logs', 'AWfOaaiVc_qQ2rg6FWAD')
-        # days = self.dateTrans(self.startTime, self.endTime)
-        # for d in days:
-        #     query = {"query": {"match_all": {}}}
-        #     index = es_index_pre + d
-        #     # es.delete_by_query(index=index, body=query, doc_type='logs')
-        #     es.delete(index=index, doc_type='logs', id='AWfOaaiVc_qQ2rg6FWAD')
-        #     # es.delete_by_query(index='indexName', body=query, doc_type='typeName')
+        days = self.dateTrans(self.startTime, self.endTime)
+        for d in days:
+            query = json.dumps({
+                "query": {"match_all": {}}
+            })
+            index = es_index_pre + d
+            r = requests.post(es_url +'/'+ index + '/logs/_delete_by_query', query)
+            print(r.content)
 
     def dateTrans(self, startTime, endTime):
         days = set([])
@@ -144,4 +146,4 @@ class deleteEsData():
 if __name__ == '__main__':
     # exportEsData(1543593600, 1546185600).exportData()
     # importEsData(1543593600, 1546185600).importEsData()
-    deleteEsData(1545321600, 1545321600).deleteEsData()
+    deleteEsData(1543593600, 1546185600).deleteEsData()
