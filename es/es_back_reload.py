@@ -108,8 +108,40 @@ class importEsData():
                 days.add(tartTimeStr)
         return days
 
+
+class deleteEsData():
+
+    def __init__(self, startTime, endTime):
+        self.startTime = startTime
+        self.endTime = endTime
+
+    def deleteEsData(self):
+        es.delete('csoc-logs-2018.12.21', 'logs', 'AWfOaaiVc_qQ2rg6FWAD')
+        # days = self.dateTrans(self.startTime, self.endTime)
+        # for d in days:
+        #     query = {"query": {"match_all": {}}}
+        #     index = es_index_pre + d
+        #     # es.delete_by_query(index=index, body=query, doc_type='logs')
+        #     es.delete(index=index, doc_type='logs', id='AWfOaaiVc_qQ2rg6FWAD')
+        #     # es.delete_by_query(index='indexName', body=query, doc_type='typeName')
+
+    def dateTrans(self, startTime, endTime):
+        days = set([])
+        tartTimeStr = time.strftime("%Y.%m.%d", time.localtime(startTime))
+        endTimeStr = time.strftime("%Y.%m.%d", time.localtime(endTime))
+        days.add(tartTimeStr)
+        days.add(endTimeStr)
+        while startTime < endTime:
+            startTime = startTime + 86400
+            if (startTime < endTime):
+                tartTimeStr = time.strftime("%Y.%m.%d", time.localtime(startTime))
+                days.add(tartTimeStr)
+        return days
+
+
 # 导出： 开始时间戳，结束时间戳 10位到秒
 # 导入： 先把文件放入对应的目录 如:E:\data\es_reload\ 开始时间戳，结束时间戳
 if __name__ == '__main__':
     # exportEsData(1543593600, 1546185600).exportData()
-    importEsData(1543593600, 1546185600).importEsData()
+    # importEsData(1543593600, 1546185600).importEsData()
+    deleteEsData(1545321600, 1545321600).deleteEsData()
