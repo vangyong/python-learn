@@ -35,13 +35,15 @@ def create_backup(startTime, endTime):
     for d in days:
         index = es_index_pre + d
         r1 = requests.get(es_url + '/_snapshot' + es_backup + '/snapshot_' + d)
-        if (r1.status_code != 200):
+        if (r1.status_code == 404 and r1.reason == 'Not Found'):
             json_data = json.dumps({"indices": index, "ignore_unavailable": "false", "include_global_state": "false"})
             r = requests.put(es_url + '/_snapshot' + es_backup + '/snapshot_' + d, json_data)
             if (r.status_code != 200):
                 logging.info("backup data failed day of " + d)
                 logging.info(r.content)
                 flag = 0
+        else:
+            logging.info("the day of" + d + " data has backed  before")
     return flag
 
 
@@ -59,8 +61,8 @@ def create_reload(startTime, endTime):
     return flag
 
 
-# 备份： 开始时间戳，结束时间戳 10位到秒
-# 迁回： 先把文件放入对应的目录 如:/es_backup 开始时间戳，结束时间戳
+# 备份： 开始时间戳，结束时间戳 10位到秒  1：成功 0： 失败
+# 回迁： 先把文件放入对应的目录 如:/es_backup 开始时间戳，结束时间戳 1：成功 0： 失败
 if __name__ == '__main__':
-    create_backup(1545580800, 1545580800)
+    create_backup(1545753600, 1545753600)
     # create_reload(1545580800, 1545667200)
