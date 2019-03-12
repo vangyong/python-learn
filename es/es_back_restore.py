@@ -61,8 +61,25 @@ def create_reload(startTime, endTime):
     return flag
 
 
+def delete_data(startTime, endTime):
+    days = date_trans(startTime, endTime)
+    flag = 1
+    for d in days:
+        query = json.dumps({
+            "query": {"match_all": {}}
+        })
+        index = es_index_pre + d
+        r = requests.post(es_url + '/' + index + '/logs/_delete_by_query', query)
+        if (r.status_code != 200):
+            logging.info("delete data failed day of " + d)
+            logging.info(r.content)
+            flag = 0
+    return flag
+
 # 备份： 开始时间戳，结束时间戳 10位到秒  1：成功 0： 失败
 # 回迁： 先把文件放入对应的目录 如:/es_backup 开始时间戳，结束时间戳 1：成功 0： 失败
+# 删除： 备份完成后删除备份之前一天的数据 开始时间戳，结束时间戳 1：成功 0： 失败
 if __name__ == '__main__':
     create_backup(1545753600, 1545753600)
     # create_reload(1545580800, 1545667200)
+    # delete_data(1545580800, 1545667200)
