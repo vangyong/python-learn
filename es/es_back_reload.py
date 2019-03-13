@@ -124,7 +124,7 @@ class deleteEsData():
                 "query": {"match_all": {}}
             })
             index = es_index_pre + d
-            r = requests.post(es_url +'/'+ index + '/logs/_delete_by_query', query)
+            r = requests.post(es_url + '/' + index + '/logs/_delete_by_query', query)
             print(r.content)
 
     def dateTrans(self, startTime, endTime):
