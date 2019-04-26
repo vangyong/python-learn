@@ -4,7 +4,7 @@
 
 import configparser
 import requests
-import json
+import utils
 import time
 import logging
 
@@ -36,7 +36,7 @@ def create_backup(startTime, endTime):
         index = es_index_pre + d
         r1 = requests.get(es_url + '/_snapshot' + es_backup + '/snapshot_' + d)
         if r1.status_code == 404 and r1.reason == 'Not Found':
-            json_data = json.dumps({"indices": index, "ignore_unavailable": "false", "include_global_state": "false"})
+            json_data = utils.dumps({"indices": index, "ignore_unavailable": "false", "include_global_state": "false"})
             r = requests.put(es_url + '/_snapshot' + es_backup + '/snapshot_' + d, json_data)
             if r.status_code != 200:
                 logging.info("backup data failed day of " + d)

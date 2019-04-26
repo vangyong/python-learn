@@ -7,7 +7,7 @@ import csv
 import time
 import os
 import requests
-import json
+import utils
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
 
@@ -120,7 +120,7 @@ class deleteEsData():
     def deleteEsData(self):
         days = self.dateTrans(self.startTime, self.endTime)
         for d in days:
-            query = json.dumps({
+            query = utils.dumps({
                 "query": {"match_all": {}}
             })
             index = es_index_pre + d
