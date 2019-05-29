@@ -12,6 +12,12 @@ from flask import Flask, abort, request, jsonify
 app = Flask(__name__)
 
 
+@app.route('/demo/<id>', methods=['GET'])
+def get_demo(id):
+    a = {'result': {'a': {'b': 'b'}}}
+    return jsonify(a)
+
+
 @app.route('/pcap/<id>', methods=['GET'])
 def get_task(id):
     if not id:
