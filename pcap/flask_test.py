@@ -4,7 +4,7 @@
 #  yum install wireshark 或者 yum install tshark
 # pip install flask
 
-import pyshark
+import pcap
 import json
 
 from flask import Flask, abort, request, jsonify
@@ -23,7 +23,7 @@ def get_task(id):
     if not id:
         return jsonify({'result': 'id is none'})
     else:
-        fileCapture = pyshark.FileCapture('test.pcap')
+        fileCapture = pcap.FileCapture('test.pcap')
         packet_list = []
         for packet in fileCapture:
             packet_dict = {}

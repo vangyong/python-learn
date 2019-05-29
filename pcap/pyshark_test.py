@@ -2,11 +2,11 @@
 # -*- coding: UTF-8 -*-
 # 文件名：pyshark_test.py
 
-import pyshark
+import pcap
 import json
 import logging
 
-cap = pyshark.FileCapture('test.pcap')
+cap = pcap.FileCapture('test.pcap')
 print("type of cap:")
 print(type(cap))
 print(cap)
