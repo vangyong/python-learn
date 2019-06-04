@@ -6,3 +6,8 @@ pip freeze > requires
 pip install -r requires
 
 3、
+
+
+
+ice 生成代码
+slice2py Printer.ice
