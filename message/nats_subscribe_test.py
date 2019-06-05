@@ -5,6 +5,7 @@
 import asyncio
 from nats.aio.client import Client as NATS
 
+
 async def run(loop):
     nc = NATS()
 
@@ -17,16 +18,7 @@ async def run(loop):
         print("Received a message on '{subject} {reply}': {data}".format(
             subject=subject, reply=reply, data=data))
 
-    # "*" matches any token, at any level of the subject.
-    # await nc.subscribe("foo.*.baz", cb=message_handler)
-    # await nc.subscribe("foo.bar.*", cb=message_handler)
-
-    # ">" matches any length of the tail of a subject, and can only be the last token
-    # E.g. 'foo.>' will match 'foo.bar', 'foo.bar.baz', 'foo.foo.bar.bax.22'
     await nc.subscribe("subject", cb=message_handler)
-
-    # Matches all of the above.
-    # await nc.publish("foo.bar.baz", b'Hello World')
 
     # Gracefully close the connection.
     await nc.drain()
