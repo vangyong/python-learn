@@ -30,3 +30,4 @@ class Cat(Animal):
 if __name__ == '__main__':
     d = Dog()
     d.run()
+    d.eat()

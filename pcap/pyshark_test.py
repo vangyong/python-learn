@@ -6,6 +6,10 @@ import pcap
 import json
 import logging
 
+# 获取网卡
+# cap = pyshark.FileCapture('ens33')
+# cap.sniff(timeout=50)
+
 cap = pcap.FileCapture('test.pcap')
 print("type of cap:")
 print(type(cap))

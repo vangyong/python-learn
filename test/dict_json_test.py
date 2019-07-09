@@ -59,7 +59,7 @@ if __name__ == '__main__':
     print(convert_to_dicts([stu, stu]))
     print('-----class_to_dict------')
     print(class_to_dict(stu))
-    print('-----class_to_dict------')
+    print('-----class_to_dicts------')
     print(class_to_dict([stu, stu]))
     stua = Student('zhangsan', 20)
     stub = Student('lisi', 10)
