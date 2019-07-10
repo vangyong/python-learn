@@ -1,10 +1,12 @@
-.DS_Store
+# idea ignore
+.idea/
 
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+# temp ignore
+venv
+venv/*
+__pycache__
+*/*__pycache__
+
+# system ignore
+.DS_Store
 
