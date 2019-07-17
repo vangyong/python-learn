@@ -3,12 +3,12 @@
 
 import Ice
 import sys
-
 import Demo
 
 
 class PrinterI(Demo.Printer):
     def printString(self, s, current=None):
+        print('this is server print:')
         print(s)
 
 

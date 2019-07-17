@@ -2,19 +2,18 @@
 # -*- coding:utf-8 -*-
 
 import sys
-
-import FileServer
 import Ice
+import Demo
 
 
-class FileServerI(FileServer.Printer):
+class PrinterI(Demo.Printer):
     def printString(self, s, current=None):
         print(s)
 
 
 with Ice.initialize(sys.argv) as communicator:
-    adapter = communicator.createObjectAdapterWithEndpoints("SimplePrinterAdapter", "default -p 10000")
-    object = FileServerI()
+    adapter = communicator.createObjectAdapterWithEndpoints("SimplePrinterAdapter", "default -p 10030")
+    object = PrinterI()
     adapter.add(object, communicator.stringToIdentity("SimplePrinter"))
     adapter.activate()
     communicator.waitForShutdown()

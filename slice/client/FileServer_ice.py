@@ -24,6 +24,9 @@ __name__ = 'FileServer'
 if '_t_Bytes' not in _M_FileServer.__dict__:
     _M_FileServer._t_Bytes = IcePy.defineSequence('::FileServer::Bytes', (), IcePy._t_byte)
 
+if '_t_ExtInfo' not in _M_FileServer.__dict__:
+    _M_FileServer._t_ExtInfo = IcePy.defineDictionary('::FileServer::ExtInfo', (), IcePy._t_string, IcePy._t_string)
+
 if 'FileInfo' not in _M_FileServer.__dict__:
     _M_FileServer.FileInfo = Ice.createTempClass()
     class FileInfo(object):
@@ -225,6 +228,66 @@ if 'FileReadServerPrx' not in _M_FileServer.__dict__:
         def end_CleanFileBlock(self, _r):
             return _M_FileServer.FileReadServer._op_CleanFileBlock.end(self, _r)
 
+        def GetExInfo(self, fileid, key, vallen, context=None):
+            return _M_FileServer.FileReadServer._op_GetExInfo.invoke(self, ((fileid, key, vallen), context))
+
+        def GetExInfoAsync(self, fileid, key, vallen, context=None):
+            return _M_FileServer.FileReadServer._op_GetExInfo.invokeAsync(self, ((fileid, key, vallen), context))
+
+        def begin_GetExInfo(self, fileid, key, vallen, _response=None, _ex=None, _sent=None, context=None):
+            return _M_FileServer.FileReadServer._op_GetExInfo.begin(self, ((fileid, key, vallen), _response, _ex, _sent, context))
+
+        def end_GetExInfo(self, _r):
+            return _M_FileServer.FileReadServer._op_GetExInfo.end(self, _r)
+
+        def GetAllExInfo(self, fileid, context=None):
+            return _M_FileServer.FileReadServer._op_GetAllExInfo.invoke(self, ((fileid, ), context))
+
+        def GetAllExInfoAsync(self, fileid, context=None):
+            return _M_FileServer.FileReadServer._op_GetAllExInfo.invokeAsync(self, ((fileid, ), context))
+
+        def begin_GetAllExInfo(self, fileid, _response=None, _ex=None, _sent=None, context=None):
+            return _M_FileServer.FileReadServer._op_GetAllExInfo.begin(self, ((fileid, ), _response, _ex, _sent, context))
+
+        def end_GetAllExInfo(self, _r):
+            return _M_FileServer.FileReadServer._op_GetAllExInfo.end(self, _r)
+
+        def ReadFileInfoEx(self, fileid, context=None):
+            return _M_FileServer.FileReadServer._op_ReadFileInfoEx.invoke(self, ((fileid, ), context))
+
+        def ReadFileInfoExAsync(self, fileid, context=None):
+            return _M_FileServer.FileReadServer._op_ReadFileInfoEx.invokeAsync(self, ((fileid, ), context))
+
+        def begin_ReadFileInfoEx(self, fileid, _response=None, _ex=None, _sent=None, context=None):
+            return _M_FileServer.FileReadServer._op_ReadFileInfoEx.begin(self, ((fileid, ), _response, _ex, _sent, context))
+
+        def end_ReadFileInfoEx(self, _r):
+            return _M_FileServer.FileReadServer._op_ReadFileInfoEx.end(self, _r)
+
+        def GenPcap(self, pcapid, context=None):
+            return _M_FileServer.FileReadServer._op_GenPcap.invoke(self, ((pcapid, ), context))
+
+        def GenPcapAsync(self, pcapid, context=None):
+            return _M_FileServer.FileReadServer._op_GenPcap.invokeAsync(self, ((pcapid, ), context))
+
+        def begin_GenPcap(self, pcapid, _response=None, _ex=None, _sent=None, context=None):
+            return _M_FileServer.FileReadServer._op_GenPcap.begin(self, ((pcapid, ), _response, _ex, _sent, context))
+
+        def end_GenPcap(self, _r):
+            return _M_FileServer.FileReadServer._op_GenPcap.end(self, _r)
+
+        def ReadPcap(self, fileid, offset, len, context=None):
+            return _M_FileServer.FileReadServer._op_ReadPcap.invoke(self, ((fileid, offset, len), context))
+
+        def ReadPcapAsync(self, fileid, offset, len, context=None):
+            return _M_FileServer.FileReadServer._op_ReadPcap.invokeAsync(self, ((fileid, offset, len), context))
+
+        def begin_ReadPcap(self, fileid, offset, len, _response=None, _ex=None, _sent=None, context=None):
+            return _M_FileServer.FileReadServer._op_ReadPcap.begin(self, ((fileid, offset, len), _response, _ex, _sent, context))
+
+        def end_ReadPcap(self, _r):
+            return _M_FileServer.FileReadServer._op_ReadPcap.end(self, _r)
+
         @staticmethod
         def checkedCast(proxy, facetOrContext=None, context=None):
             return _M_FileServer.FileReadServerPrx.ice_checkedCast(proxy, '::FileServer::FileReadServer', facetOrContext, context)
@@ -266,6 +329,21 @@ if 'FileReadServerPrx' not in _M_FileServer.__dict__:
         def CleanFileBlock(self, timefrom, timeto, status, current=None):
             raise NotImplementedError("servant method 'CleanFileBlock' not implemented")
 
+        def GetExInfo(self, fileid, key, vallen, current=None):
+            raise NotImplementedError("servant method 'GetExInfo' not implemented")
+
+        def GetAllExInfo(self, fileid, current=None):
+            raise NotImplementedError("servant method 'GetAllExInfo' not implemented")
+
+        def ReadFileInfoEx(self, fileid, current=None):
+            raise NotImplementedError("servant method 'ReadFileInfoEx' not implemented")
+
+        def GenPcap(self, pcapid, current=None):
+            raise NotImplementedError("servant method 'GenPcap' not implemented")
+
+        def ReadPcap(self, fileid, offset, len, current=None):
+            raise NotImplementedError("servant method 'ReadPcap' not implemented")
+
         def __str__(self):
             return IcePy.stringify(self, _M_FileServer._t_FileReadServerDisp)
 
@@ -278,6 +356,11 @@ if 'FileReadServerPrx' not in _M_FileServer.__dict__:
     FileReadServer._op_ReadFile = IcePy.Operation('ReadFile', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), _M_FileServer._t_Bytes, False, 0),), ((), IcePy._t_int, False, 0), ())
     FileReadServer._op_UpdateFileInfo = IcePy.Operation('UpdateFileInfo', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0), ((), _M_FileServer._t_FileInfo, False, 0)), (), ((), IcePy._t_bool, False, 0), ())
     FileReadServer._op_CleanFileBlock = IcePy.Operation('CleanFileBlock', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0), ((), IcePy._t_string, False, 0), ((), IcePy._t_int, False, 0)), (), ((), IcePy._t_bool, False, 0), ())
+    FileReadServer._op_GetExInfo = IcePy.Operation('GetExInfo', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0), ((), IcePy._t_string, False, 0), ((), IcePy._t_int, False, 0)), (((), IcePy._t_string, False, 0),), ((), IcePy._t_bool, False, 0), ())
+    FileReadServer._op_GetAllExInfo = IcePy.Operation('GetAllExInfo', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), _M_FileServer._t_ExtInfo, False, 0),), ((), IcePy._t_bool, False, 0), ())
+    FileReadServer._op_ReadFileInfoEx = IcePy.Operation('ReadFileInfoEx', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), _M_FileServer._t_FileInfo, False, 0), ((), _M_FileServer._t_ExtInfo, False, 0)), ((), IcePy._t_bool, False, 0), ())
+    FileReadServer._op_GenPcap = IcePy.Operation('GenPcap', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), IcePy._t_string, False, 0),), ((), IcePy._t_long, False, 0), ())
+    FileReadServer._op_ReadPcap = IcePy.Operation('ReadPcap', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0), ((), IcePy._t_long, False, 0), ((), IcePy._t_long, False, 0)), (((), _M_FileServer._t_Bytes, False, 0),), ((), IcePy._t_long, False, 0), ())
 
     _M_FileServer.FileReadServer = FileReadServer
     del FileReadServer

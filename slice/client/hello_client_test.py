@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import Ice
 import sys
-
+import Ice
 import Demo
 
 with Ice.initialize(sys.argv) as communicator:
-    base = communicator.stringToProxy("SimplePrinter:default -p 10000")
+    base = communicator.stringToProxy("SimplePrinter:default -p 10030")
     printer = Demo.PrinterPrx.checkedCast(base)
     if not printer:
         raise RuntimeError("Invalid proxy")
-    print('this is client print:')
-    printer.printString("Hello World! This is Client's Message")
+
+    printer.printString("Hello World! client message")
