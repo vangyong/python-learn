@@ -48,6 +48,7 @@ from functools import reduce
 # f()
 
 
+# 函数包装Decorators
 def log(func):
     def wrapper(*args, **kw):
         print('call %s():' % func.__name__)

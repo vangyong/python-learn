@@ -1,6 +1,8 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
-# 文件名：func_test.py
+# -*- coding: utf-8 -*-
+# @Time   : 2019/7/20 14:12
+# @Author : wangyong
+# @Desc : 函数定义
 
 
 # 可变参数函数

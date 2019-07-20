@@ -1,5 +1,8 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
+# @Time   : 2019/7/20 14:12
+# @Author : wangyong
+# @Desc : 异步io
 
 import asyncio
 

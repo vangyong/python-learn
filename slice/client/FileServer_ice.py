@@ -288,6 +288,18 @@ if 'FileReadServerPrx' not in _M_FileServer.__dict__:
         def end_ReadPcap(self, _r):
             return _M_FileServer.FileReadServer._op_ReadPcap.end(self, _r)
 
+        def test1(self, fileid, context=None):
+            return _M_FileServer.FileReadServer._op_test1.invoke(self, ((fileid, ), context))
+
+        def test1Async(self, fileid, context=None):
+            return _M_FileServer.FileReadServer._op_test1.invokeAsync(self, ((fileid, ), context))
+
+        def begin_test1(self, fileid, _response=None, _ex=None, _sent=None, context=None):
+            return _M_FileServer.FileReadServer._op_test1.begin(self, ((fileid, ), _response, _ex, _sent, context))
+
+        def end_test1(self, _r):
+            return _M_FileServer.FileReadServer._op_test1.end(self, _r)
+
         @staticmethod
         def checkedCast(proxy, facetOrContext=None, context=None):
             return _M_FileServer.FileReadServerPrx.ice_checkedCast(proxy, '::FileServer::FileReadServer', facetOrContext, context)
@@ -344,6 +356,9 @@ if 'FileReadServerPrx' not in _M_FileServer.__dict__:
         def ReadPcap(self, fileid, offset, len, current=None):
             raise NotImplementedError("servant method 'ReadPcap' not implemented")
 
+        def test1(self, fileid, current=None):
+            raise NotImplementedError("servant method 'test1' not implemented")
+
         def __str__(self):
             return IcePy.stringify(self, _M_FileServer._t_FileReadServerDisp)
 
@@ -361,6 +376,7 @@ if 'FileReadServerPrx' not in _M_FileServer.__dict__:
     FileReadServer._op_ReadFileInfoEx = IcePy.Operation('ReadFileInfoEx', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), _M_FileServer._t_FileInfo, False, 0), ((), _M_FileServer._t_ExtInfo, False, 0)), ((), IcePy._t_bool, False, 0), ())
     FileReadServer._op_GenPcap = IcePy.Operation('GenPcap', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), IcePy._t_string, False, 0),), ((), IcePy._t_long, False, 0), ())
     FileReadServer._op_ReadPcap = IcePy.Operation('ReadPcap', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0), ((), IcePy._t_long, False, 0), ((), IcePy._t_long, False, 0)), (((), _M_FileServer._t_Bytes, False, 0),), ((), IcePy._t_long, False, 0), ())
+    FileReadServer._op_test1 = IcePy.Operation('test1', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), ((), IcePy._t_string, False, 0), ())
 
     _M_FileServer.FileReadServer = FileReadServer
     del FileReadServer

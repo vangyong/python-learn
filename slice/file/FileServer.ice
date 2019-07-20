@@ -31,6 +31,9 @@ interface FileReadServer
 	/* pcap stuff */
 	long GenPcap(string pcapid, out string fileid);
 	long ReadPcap(string fileid, long offset, long len, out Bytes buf);
+
+	/* 测试 */
+	string test1(string fileid);
 };
 
 };

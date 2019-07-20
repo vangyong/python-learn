@@ -1,10 +1,9 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
-# 文件名：test2.py
+# -*- coding: utf-8 -*-
+# @Time   : 2019/7/20 14:12
+# @Author : wangyong
+# @Desc : 主函数带参数调用
 
-' a test module'
-
-__author__ = 'Michael Liao'
 import sys
 
 

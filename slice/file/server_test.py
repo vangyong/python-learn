@@ -7,14 +7,20 @@ import FileServer
 
 
 class FileServerI(FileServer.FileReadServer):
-    def ReadPcap(self, sfileid, offset, len):
-        print('get a client request:')
-        f = open("foo.txt", "r+")
-        str = f.read(offset, len)
-        seek_res = f.seek(offset, len)
-        print('server端读取的字符串str：' + str)
-        print('server端读取的字符串seek_res：' + seek_res)
-        return str
+    def ReadPcap(self, sfileid, offset, len, current=None):
+        print('get a client request:%s', sfileid)
+        f = open("foo.txt", "rb", True)
+        f.seek(offset)
+        ret = f.read(len)
+        # seek_res = f.seek(offset, len)
+        # print('server端读取的字符串seek_res：' + seek_res)
+        print('server端读取的字符串ret：' + ret.decode('utf-8'))
+        return tuple(ret)
+
+    def test1(self, fileid, current=None):
+        print('get a client request:%s', fileid)
+        ret_str = 'this is return string'
+        return ret_str
 
 
 with Ice.initialize(sys.argv) as communicator:
