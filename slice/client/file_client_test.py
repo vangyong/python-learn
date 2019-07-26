@@ -10,11 +10,13 @@ with Ice.initialize(sys.argv) as communicator:
     fileserver = FileServer.FileReadServerPrx.checkedCast(base)
     if not fileserver:
         raise RuntimeError("Invalid proxy")
-    f_buff = bytes()
-    tup1 = ()
-    tup1 = fileserver.ReadPcap('1', 0, 10)
-    # f_buff = fileserver.ReadPcap('1', 0, 10)
-    print(f_buff)
+    param_buff = bytes()
+    ret_buff = b''
+    # fileserver.ReadPcap('1', 0, 10, ret_buff)
+    ret_buff = fileserver.ReadPcap('1', 0, 10)
+    print(ret_buff)
+
+    # 调试test1方法
     # param1 = 'ppp01'
-    # ret_str = fileserver.test1(param1)
-    # print(ret_str)
+    # ret_test1 = fileserver.test1(param1)
+    # print(ret_test1)

@@ -7,16 +7,27 @@ import FileServer
 
 
 class FileServerI(FileServer.FileReadServer):
+    # pcap包下载
     def ReadPcap(self, sfileid, offset, len, current=None):
-        print('get a client request:%s', sfileid)
-        f = open("foo.txt", "rb", True)
-        f.seek(offset)
-        ret = f.read(len)
-        # seek_res = f.seek(offset, len)
-        # print('server端读取的字符串seek_res：' + seek_res)
-        print('server端读取的字符串ret：' + ret.decode('utf-8'))
-        return tuple(ret)
+        # print('get a client request:%s', sfileid)
+        # f = open("foo.txt", "rb", True)
+        # f.seek(offset)
+        # ret_buff = b''
+        # ret_buff = f.read(len)
+        # # seek_res = f.seek(offset, len)
+        # # print('server端读取的字符串seek_res：' + seek_res)
+        # print('server端读取的字符串ret：' + ret_buff.decode('utf-8'))
+        # return ret_buff
 
+        # 测试返回
+        print('get a client request:%s', sfileid)
+        ret_buff = b'abcd'
+        # print('server端读取的字符串seek_res：' + seek_res)
+        print('server端读取的字符串ret：' + ret_buff.decode('utf-8'))
+        ret_tuple = (ret_buff,)
+        return ret_tuple
+
+    # 测试方法
     def test1(self, fileid, current=None):
         print('get a client request:%s', fileid)
         ret_str = 'this is return string'
