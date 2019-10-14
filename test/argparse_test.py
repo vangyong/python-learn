@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time   : 2019/7/20 14:12
 # @Author : wangyong
-# @Desc : 参数调用
+# @Desc : 调用参数解析
 
 import argparse
 import sys
@@ -21,11 +21,11 @@ print('-------arg:')
 print(arg)
 print(type(arg))
 print('-------vars arg:')
-print(vars(arg))  # vars为返回对象的属性词典
+print(vars(arg))  # vars返回对象的属性词典
 print(arg.learning_rate)
 print(arg.max_steps)
 print(arg.hidden1)
 
-# 命令行
+# 命令行执行
 # python3 argparse_test.py --learning_rate=20 --max_steps=10
 # python3 argparse_test.py --learning_rate 20 --max_steps 10

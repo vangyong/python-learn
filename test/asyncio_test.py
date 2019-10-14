@@ -20,7 +20,6 @@ def wget(host):
         if line == b'\r\n':
             break
         print('%s header > %s' % (host, line.decode('utf-8').rstrip()))
-    # Ignore the body, close the socket
     writer.close()
 
 
