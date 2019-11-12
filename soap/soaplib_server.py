@@ -24,4 +24,4 @@ if __name__ == '__main__':
         server = make_server('localhost', 7789, wsgi_application)
         server.serve_forever()
     except ImportError:
-        print "Error: example server code requires Python >= 2.5"
+        print("Error: example server code requires Python >= 2.5")
