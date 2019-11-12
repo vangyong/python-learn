@@ -5,11 +5,10 @@
 # @Desc :
 
 
-from message import MessageService
-from thrift.transport import TSocket
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol
-from thrift.server import TServer
+import thriftpy2
+from thriftpy2.rpc import make_server
+
+message_thrift = thriftpy2.load("message.thrift", module_name="message_thrift")
 
 
 class MessageServiceHandler:
@@ -33,12 +32,8 @@ class MessageServiceHandler:
 
 
 if __name__ == '__main__':
-    handler = MessageServiceHandler()
-    processor = MessageService.Processor(handler)
-    transport = TSocket.TServerSocket("localhost", "9090")
-    tfactory = TTransport.TFramedTransportFactory()
-    pfactory = TBinaryProtocol.TBinaryProtocolFactory()
-    server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
-    print("python thrift server start")
+    # 定义监听的端口和服务
+    server = make_server(message_thrift.MessageService, MessageServiceHandler(), '127.0.0.1', 9090)
+    print("serving...")
     server.serve()
     print("python thrift server exit")
