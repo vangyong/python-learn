@@ -18,4 +18,8 @@ if __name__ == '__main__':
 
     print(client.sayHello())
 
-    print(client.sendMobileMessage("137",""))
+    print(client.sendMobileMessage("137", "mobile消息"))
+
+    print(client.sendEmailMessage("137", "email消息"))
+
+    print("发送完成")
