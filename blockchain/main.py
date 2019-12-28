@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # @Time   : 2019/12/20 14:12
 # @Author : wangyong

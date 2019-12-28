@@ -3,7 +3,7 @@
 # 文件名：elasticsearch_back_relocation.py
 
 import configparser
-import utils
+import util
 import os
 import time
 import urllib.request
@@ -32,7 +32,7 @@ class exportEsData():
             os.mknod(self.index + "_" + self.type + ".json")
         msg = urllib.urlopen(self.url).read()
         print(msg)
-        obj = utils.loads(msg)
+        obj = util.loads(msg)
         num = obj["hits"]["total"]
         start = 0
         end = num / self.size + 1
@@ -43,12 +43,12 @@ class exportEsData():
         print("export data end!!!\n\t total consuming time:" + str(time.time() - begin) + "s")
 
     def writeFile(self, msg):
-        obj = utils.loads(msg)
+        obj = util.loads(msg)
         vals = obj["hits"]["hits"]
         try:
             f = open(self.index + "_" + self.type + ".json", "a")
             for val in vals:
-                a = utils.dumps(val["_source"], ensure_ascii=False)
+                a = util.dumps(val["_source"], ensure_ascii=False)
                 f.write(a + "\n")
         finally:
             f.flush()
