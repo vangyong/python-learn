@@ -1,4 +1,8 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+# @Time   : 2019/7/20 14:12
+# @Author : wangyong
+# @Desc : 端口扫描工具
 
 import telnetlib
 import threading
