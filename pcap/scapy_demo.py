@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# 文件名：scapy_test.py
 
 from scapy.all import *
 

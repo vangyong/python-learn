@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 # @Time   : 2019/12/20 14:12
 # @Author : wangyong
-# @Desc : 主函数带参数调用
+# @Desc : API主函数
 
 import hashlib
 import json
 from textwrap import dedent
 from time import time
 from uuid import uuid4
-from flask import Flask
+from flask import Flask, jsonify
 
 
 class Blockchain(object):

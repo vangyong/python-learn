@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# 文件名：pyshark_test.py
 #  yum install wireshark 或者 yum install tshark
 # pip install flask
 
