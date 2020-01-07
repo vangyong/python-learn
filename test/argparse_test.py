@@ -17,9 +17,11 @@ print(sys.argv[0:])
 print(type(sys.argv[0:]))
 print(sys.argv[1:])
 print(type(sys.argv[1:]))
+
 print('-------arg:')
 print(arg)
 print(type(arg))
+
 print('-------vars arg:')
 print(vars(arg))  # vars返回对象的属性词典
 print(arg.learning_rate)
