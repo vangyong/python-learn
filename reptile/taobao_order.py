@@ -50,7 +50,8 @@ def buy(times):
                         browser.find_element_by_link_text("结 算").click()
                         print(f"结算成功，准备提交订单")
                         break
-                except:
+                except Exception as ex:
+                    print(f"结算异常:\t", str(ex))
                     pass
             # 点击提交订单按钮
             while True:
@@ -58,7 +59,8 @@ def buy(times):
                     if browser.find_element_by_link_text('提交订单'):
                         browser.find_element_by_link_text('提交订单').click()
                         print(f"抢购成功，请尽快付款")
-                except:
+                except Exception as ex:
+                    print(f"str(Exception):\t", str(ex))
                     print(f"再次尝试提交订单")
             time.sleep(0.01)
 
@@ -70,7 +72,7 @@ if __name__ == "__main__":
     method = 1
 
     # 请指定抢购时间，时间格式："2019-06-01 10:08:00.000"
-    times = "2019-06-04 08:35:00.000"
+    times = "2020-05-28 18:35:00.000"
 
     # 自动打开Chrome浏览器
     browser = webdriver.Chrome()
