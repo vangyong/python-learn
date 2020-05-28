@@ -5,7 +5,7 @@ pip freeze > requirements
 pip install -r requirements
 2.anaconda 导出、安装
 conda list -e > requirements
-conda install --yes --file requirements    
+conda install --yes --file requirements  
 
 ## ICE 服务
 ice 生成代码(需先安装ice)

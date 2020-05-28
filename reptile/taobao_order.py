@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 # @Time   : 2019/7/20 14:12
 # @Author : wangyong
-# @Desc :
+# @Desc : mac brew cask install chromedriver
+# @Link : https://segmentfault.com/a/1190000019402937?utm_source=tag-newest
 from selenium import webdriver
 import datetime
 import time

@@ -1,6 +1,0 @@
-#!E:\mygit\python-tool\venv\Scripts\python.exe
-
-from kafka_utils.kafka_rolling_restart.main import run
-
-if __name__ == '__main__':
-    run()
