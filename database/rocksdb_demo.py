@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-# 文件名：rocksdb_test.py
+# 文件名：rocksdb_demo.py
 
 import rocksdb
 

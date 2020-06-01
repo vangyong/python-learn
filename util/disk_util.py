@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# 文件名：disk_test.py
+# 文件名：disk_util.py
 import os
 
 
@@ -21,4 +21,4 @@ def disk_usage(path):
 
 
 if __name__ == '__main__':
-    disk_usage('/data/clickhouse/data')
+    disk_usage('/data/datas/clickhouse/')
