@@ -15,7 +15,7 @@ es_index = cfg.get('db', 'es.index')
 es_type = cfg.get('db', 'es.type')
 
 
-class exportEsData():
+class exportor():
     size = 10000
 
     def __init__(self, url, index, type):
@@ -55,7 +55,7 @@ class exportEsData():
             f.close()
 
 
-class importEsData():
+class importor():
     def __init__(self, url, index, type):
         self.url = url + "/" + index + "/" + type
         self.index = index
@@ -78,6 +78,6 @@ class importEsData():
 
 
 if __name__ == '__main__':
-    exportEsData("http://10.4.4.203:9200", "csoc-logs-*", "logs").exportData()
+    exportor("http://10.4.4.203:9200", "csoc-logs-*", "logs").exportData()
 
-    # importEsData("http://10.4.4.203:9200", "csoc-logs-*", "logs").importData()
+    importor("http://10.4.4.203:9200", "csoc-logs-*", "logs").importData()
