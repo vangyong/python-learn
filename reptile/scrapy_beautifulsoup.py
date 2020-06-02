@@ -4,8 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-class WikidatascrapyItem(scrapy.Item):
-    # define the fields for your item here like:
+class BookItem(scrapy.Item):
     name = scrapy.Field()
     desc = scrapy.Field()
 
@@ -20,8 +19,9 @@ def get_urls():
 
     urls = []
     for human in human_list:
-        url = human.find('a')['href']
-        urls.append(url)
+        if human.find('a'):
+            url = human.find('a')['href']
+            urls.append(url)
 
     return urls
 
@@ -32,7 +32,7 @@ class BookSpider(scrapy.Spider):
     start_urls = get_urls()  # 需要爬取的500个网址
 
     def parse(self, response):
-        item = WikidatascrapyItem()
+        item = BookItem()
         # name and description
         item['name'] = response.css('span.wikibase-title-label').xpath('text()').extract_first()
         item['desc'] = response.css('span.wikibase-descriptionview-text').xpath('text()').extract_first()
