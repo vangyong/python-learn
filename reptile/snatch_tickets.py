@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+# @Desc : 12306 抢票
+# @Desc: install chromedriver
 
 
 from splinter.browser import Browser
@@ -11,13 +13,13 @@ import traceback
 import time, sys
 
 
-class huoche(object):
+class Train(object):
     driver_name = ''
     executable_path = ''
 
     # 用户名，密码
     username = u"vangyong"
-    passwd = u"wy513288"
+    passwd = u"123456"
 
     # cookies值得自己去找, 下面两个分别是上海, 太原南
     starts = u"%u4E0A%u6D77%2CSHH"
@@ -87,7 +89,6 @@ class huoche(object):
             print("还没开始预订")
             continue
         else:
-
             while self.driver.url == self.ticket_url:
                 self.driver.find_by_text(u"查询").click()
                 count += 1
@@ -130,6 +131,6 @@ class huoche(object):
 
 
 if __name__ == '__main__':
-    huoche = huoche()
+    train = Train()
 
-    huoche.start()
+    train.start()

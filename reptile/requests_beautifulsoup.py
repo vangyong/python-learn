@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import requests
+from requests.packages import urllib3
 from bs4 import BeautifulSoup
+# import urllib3.contrib.pyopenssl
+# import OpenSSL.SSL from OpenSSL import crypto, SSL
 import time
 
 # url地址
@@ -14,7 +17,8 @@ urls = []
 
 # 解析每个网页
 def parser(url):
-    req = requests.get(url)
+    urllib3.disable_warnings()
+    req = requests.get(url, verify=False)
     soup = BeautifulSoup(req.text, "lxml")
     navbar = soup.find('a', class_="navbar-brand")
     if navbar is not None:
@@ -25,10 +29,10 @@ def parser(url):
 
 
 if __name__ == '__main__':
-    t1 = time.time()  # 开始时间
+    start_time = time.time()  # 开始时间
     print('#' * 50)
-
-    req = requests.get(base_url, headers=headers)  # 发送HTTP请求
+    urllib3.disable_warnings()
+    req = requests.get(base_url, verify=False, headers=headers)
     soup = BeautifulSoup(req.text, "lxml")
     project_list = soup.find(id='projects-list')('li')
     for project in project_list:
@@ -37,6 +41,6 @@ if __name__ == '__main__':
             urls.append(project_url)
     for url in urls:
         parser(url)
-    t2 = time.time()  # 结束时间
-    print('一般方法，总共耗时：%s' % (t2 - t1))
+    end_time = time.time()  # 结束时间
+    print('一般方法，总共耗时：%s' % (end_time - start_time))
     print('#' * 50)

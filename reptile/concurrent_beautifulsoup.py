@@ -25,10 +25,9 @@ def parser(url):
 
 
 if __name__ == '__main__':
-    t1 = time.time()  # 开始时间
+    start_time = time.time()  # 开始时间
     print('#' * 50)
-
-    req = requests.get(base_url, headers=headers)  # 发送HTTP请求
+    req = requests.get(base_url, headers=headers)
     soup = BeautifulSoup(req.text, "lxml")
     project_list = soup.find(id='projects-list')('li')
     for project in project_list:
@@ -40,9 +39,10 @@ if __name__ == '__main__':
     executor = ThreadPoolExecutor(max_workers=20)
     # submit()的参数： 第一个为函数， 之后为该函数的传入参数，允许有多个
     future_tasks = [executor.submit(parser, url) for url in urls]
+
     # 等待所有的线程完成，才进入后续的执行
     wait(future_tasks, return_when=ALL_COMPLETED)
 
-    t2 = time.time()  # 结束时间
-    print('并发方法，总共耗时：%s' % (t2 - t1))
+    end_time = time.time()  # 结束时间
+    print('并发方法，总共耗时：%s' % (end_time - start_time))
     print('#' * 50)

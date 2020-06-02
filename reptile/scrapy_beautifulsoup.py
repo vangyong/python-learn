@@ -1,8 +1,13 @@
 #!/usr/bin/python3
 import scrapy.cmdline
-from wikiDataScrapy.items import WikidatascrapyItem
 import requests
 from bs4 import BeautifulSoup
+
+
+class WikidatascrapyItem(scrapy.Item):
+    # define the fields for your item here like:
+    name = scrapy.Field()
+    desc = scrapy.Field()
 
 
 def get_urls():
@@ -11,7 +16,7 @@ def get_urls():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'}
     req = requests.get(url, headers=headers)
     soup = BeautifulSoup(req.text, "lxml")
-    human_list = soup.find(id='project-list')('li')
+    human_list = soup.find(id='projects-list')('li')
 
     urls = []
     for human in human_list:
@@ -22,7 +27,7 @@ def get_urls():
 
 
 # 使用scrapy框架爬取
-class bookSpider(scrapy.Spider):
+class BookSpider(scrapy.Spider):
     name = 'wikiScrapy'  # 爬虫名称
     start_urls = get_urls()  # 需要爬取的500个网址
 

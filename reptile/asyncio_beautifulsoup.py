@@ -43,9 +43,8 @@ async def download(url):
 
 
 if __name__ == '__main__':
-    t1 = time.time()  # 开始时间
+    start_time = time.time()  # 开始时间
     print('#' * 50)
-
     req = requests.get(base_url, headers=headers)
     soup = BeautifulSoup(req.text, "lxml")
     project_list = soup.find(id='projects-list')('li')
@@ -60,6 +59,6 @@ if __name__ == '__main__':
     tasks = asyncio.gather(*tasks)
     loop.run_until_complete(tasks)
 
-    t2 = time.time()  # 结束时间
-    print('使用异步，总共耗时：%s' % (t2 - t1))
+    end_time = time.time()  # 结束时间
+    print('使用异步，总共耗时：%s' % (end_time - start_time))
     print('#' * 50)
