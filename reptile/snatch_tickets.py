@@ -46,7 +46,7 @@ class Train(object):
 
     def __init__(self):
         self.driver_name = 'chrome'
-        self.executable_path = '/usr/local/bin/chromedriver'
+        self.executable_path = 'D:\\developTools\\Anaconda3\\Scripts\\chromedriver.exe'
 
     def login(self):
         self.driver.visit(self.login_url)
@@ -81,13 +81,13 @@ class Train(object):
                 self.driver.find_by_text(u"查询").click()
                 count += 1
                 print("循环点击查询... 第 %s 次") % count
-        # sleep(1)
-        try:
-            self.driver.find_by_text(u"预订")[self.order - 1].click()
-        except Exception as e:
-            print(e)
-            print("还没开始预订")
-            continue
+                # sleep(1)
+                try:
+                    self.driver.find_by_text(u"预订")[self.order - 1].click()
+                except Exception as e:
+                    print(e)
+                    print("还没开始预订")
+                    continue
         else:
             while self.driver.url == self.ticket_url:
                 self.driver.find_by_text(u"查询").click()
@@ -102,9 +102,7 @@ class Train(object):
                     print(e)
 
                 print(u"还没开始预订 %s", count)
-
                 continue
-
                 print(u"开始预订...")
                 # sleep(3)
                 # self.driver.reload()
@@ -126,11 +124,9 @@ class Train(object):
                     sleep(1.5)
                     print("确认选座...")
                     self.driver.find_by_id('qr_submit_id').click()
-                except Exception as e:
-                print(e)
+
 
 
 if __name__ == '__main__':
     train = Train()
-
     train.start()

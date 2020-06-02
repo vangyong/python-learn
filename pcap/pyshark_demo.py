@@ -3,40 +3,36 @@
 
 import pcap
 import json
-import logging
+import pyshark
 
-# 获取网卡
+# 抓取linux网卡
 # cap = pyshark.FileCapture('ens33')
 # cap.sniff(timeout=50)
 
-cap = pcap.FileCapture('test.pcap')
-print("type of cap:")
-print(type(cap))
-print(cap)
-print('----------------------------------')
-print("type of cap[0]:")
-print(type(cap[0]))
-print(cap[0])
-print("type of cap[1]:")
-print(type(cap[1]))
-print(cap[1])
-print('----------------------------------')
-print("type of cap[0][0]:")
-print(type(cap[0][0]))
-print(cap[0][0])
-print('----------------------------------')
-print("type of cap[0][1]:")
-print(type(cap[0][1]))
-print(cap[0][1])
-print('----------------------------------')
-print("type of cap[0][1].layer_name")
-print(type(cap[0][1].layer_name))
-print(cap[0][1].layer_name)
-print('----------------------------------')
-print("type of cap[0][1].field_names")
-print(type(cap[0][1].field_names))
-print(cap[0][1].field_names)
-print('----------------------------------')
-print("type of cap[0][1].field_names[0]")
-print(type(cap[0][1].field_names[0]))
-print(cap[0][1].field_names[0])
+# 抓取windows网卡
+# tshark_path = 'D:\\Program Files\\Wireshark\\tshark.exe'
+# capture = pyshark.LiveCapture(output_file="catch.pcap", interface="本地连接", tshark_path=tshark_path)
+# capture.sniff(timeout=10)
+
+
+fileCapture = pyshark.FileCapture('test.pcap')
+packet_list = []
+for packet in fileCapture:
+    packet_dict = {}
+    packet_dict['frame_info'] = packet.frame_info
+    layer_list = []
+    for layer in packet:
+        layer_dict = {}
+        layer_dict['layer_name'] = layer.layer_name
+        field_list = []
+        field_names = layer.field_names
+        for field_name in field_names:
+            field_dict = {}
+            field_dict['field_name'] = field_name
+            field_dict['field_value'] = layer.get_field_value(field_name)
+            field_list.append(field_dict)
+        layer_dict['field_list'] = field_list
+        layer_list.append(layer_dict)
+    packet_dict['layers'] = layer_list
+    packet_list.append(packet_dict)
+print(packet_list)
