@@ -6,18 +6,19 @@
 
 dict = {"a": "apple", "b": "banana", "o": "orange"}
 
-print "##########dict######################"
+print("##########dict######################")
 for i in dict:
-    print "dict[%s]=" % i, dict[i]
+    print("dict[%s]=" % i, dict[i])
 
-print "###########items#####################"
+print("###########items#####################")
 for (k, v) in dict.items():
-    print "dict[%s]=" % k, v
+    print("dict[%s]=" % k, v)
 
-print "###########iteritems#################"
+print("###########iteritems#################")
 for k, v in dict.iteritems():
-    print "dict[%s]=" % k, v
+    print("dict[%s]=" % k, v)
 
-print "###########iterkeys,itervalues#######"
+print("###########iterkeys,itervalues#######")
 for k, v in zip(dict.iterkeys(), dict.itervalues()):
-    print "dict[%s]=" % k, v
+    print
+    "dict[%s]=" % k, v
