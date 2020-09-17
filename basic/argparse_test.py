@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time   : 2019/7/20 14:12
 # @Author : wangyong
@@ -29,5 +29,5 @@ print(arg.max_steps)
 print(arg.hidden1)
 
 # 命令行执行
-# python3 argparse_test.py --learning_rate=20 --max_steps=10
-# python3 argparse_test.py --learning_rate 20 --max_steps 10
+# python argparse_test.py --learning_rate=20 --max_steps=10
+# python argparse_test.py --learning_rate 20 --max_steps 10

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-# 文件名：class_test.py
+# 文件名：object_test.py
 
 class Animal(object):
     def run(self):
