@@ -5,12 +5,13 @@
 # @Version: 1.0.0
 # @File: jd_monitor_util.py
 # @Desc: jd旗舰店检查到货
+# @Link: https://blog.csdn.net/cyz52/article/details/104114438
 
 import requests
 import time
 
 # 有货通知 收件邮箱
-mail = '531818608@qq.com'
+mail = 'vangyong@126.com'
 # 商品的url
 url = [
     'https://c0.3.cn/stocks?callback=jQuery628332&type=getstocks&skuIds=69480031035%2C69480031036%2C69480031037%2C69480031038%2C69480031039&area=22_1930_49324_0&_=1602130521396',
@@ -31,7 +32,7 @@ def sendMail(url):
 
     # 发信方的信息：发信邮箱，QQ 邮箱授权码
     from_addr = '382247015@qq.com'
-    password = 'alpsneahzhawbfgj'
+    password = 'ckdqqdqhnrwbbidj'
 
     # 收信方邮箱
     to_addr = mail
